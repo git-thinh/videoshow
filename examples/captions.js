@@ -1,12 +1,15 @@
 var videoshow = require('../')
 
-var audio = __dirname + '/../test/fixtures/song.mp3'
+const root = process.cwd();
+console.log('root= ', root)
+
+var audio = root + '/test/fixtures/song.mp3'
 
 var options = {
   loop: 5,
   captionDelay: 350,
   transition: true,
-  useSubRipSubtitles: false, // Use ASS/SSA subtitles instead 
+  useSubRipSubtitles: false, // Use ASS/SSA subtitles instead
   subtitleStyle: {
     Fontname: 'Verdana',
     Fontsize: '26',
@@ -26,37 +29,35 @@ var options = {
   }
 }
 
-var images = [
-  {
-    path: __dirname + '/../test/fixtures/step_1.png',
-    caption: 'This is a sample subtitle'
-  }, {
-    path: __dirname + '/../test/fixtures/step_2.png',
-    caption: 'Another sample text',
-    loop: 5
-  }, {
-    path: __dirname + '/../test/fixtures/step_3.png',
-    caption: 'Fast caption',
-    captionStart: 2,
-    captionEnd: 3
-  }, {
-    path: __dirname + '/../test/fixtures/step_4.png',
-    loop: 3
-  }, {
-    path: __dirname + '/../test/fixtures/step_5.png',
-    caption: 'Bye bye'
-  }
-]
+var images = [{
+  path: root + '/test/fixtures/step_1.png',
+  caption: 'This is a sample subtitle'
+}, {
+  path: root + '/test/fixtures/step_2.png',
+  caption: 'Another sample text',
+  loop: 5
+}, {
+  path: root + '/test/fixtures/step_3.png',
+  caption: 'Fast caption',
+  captionStart: 2,
+  captionEnd: 3
+}, {
+  path: root + '/test/fixtures/step_4.png',
+  loop: 3
+}, {
+  path: root + '/test/fixtures/step_5.png',
+  caption: 'Bye bye'
+}]
 
 videoshow(images, options)
   .audio(audio)
-  .save('video.mp4')
-  .on('start', function (command) {
+  .save('./mp4/caption.mp4')
+  .on('start', function(command) {
     console.log('ffmpeg process started:', command)
   })
-  .on('error', function (err) {
+  .on('error', function(err) {
     console.error('Error:', err)
   })
-  .on('end', function (output) {
+  .on('end', function(output) {
     console.log('Video created in:', output)
   })

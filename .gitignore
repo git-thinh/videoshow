@@ -2,3 +2,6 @@ node_modules
 .DS_Store
 npm-debug.log
 test/.tmp
+mp4
+yarn.lock
+package-lock.json

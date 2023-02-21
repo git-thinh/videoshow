@@ -43,6 +43,7 @@
     "fw": "^0.1.2",
     "lil-uuid": "^0.1.0",
     "lodash.merge": "^4.6.2",
+    "videoshow": "^0.1.12",
     "yargs": "^3.5.4"
   },
   "devDependencies": {

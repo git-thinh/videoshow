@@ -1,6 +1,9 @@
 var videoshow = require('../')
 
-var audio = __dirname + '/../test/fixtures/song.mp3'
+const root = process.cwd();
+console.log('root= ', root)
+
+var audio = root + '/test/fixtures/song.mp3'
 
 var options = {
   transition: true
@@ -8,29 +11,29 @@ var options = {
 
 var images = [
   {
-    path: __dirname + '/../test/fixtures/step_1.png',
+    path: root + '/test/fixtures/step_1.png',
     disableFadeOut: true,
     loop: 2
   }, {
-    path: __dirname + '/../test/fixtures/step_2.png',
+    path: root + '/test/fixtures/step_2.png',
     disableFadeIn: true,
     loop: 5
   }, {
-    path: __dirname + '/../test/fixtures/step_3.png',
+    path: root + '/test/fixtures/step_3.png',
     transitionColor: '0xFF66C7'
   }, {
-    path: __dirname + '/../test/fixtures/step_4.png',
+    path: root + '/test/fixtures/step_4.png',
     transition: false,
     transitionColor: 'red'
   }, {
-    path: __dirname + '/../test/fixtures/step_5.png',
+    path: root + '/test/fixtures/step_5.png',
     transition: false
   }
 ]
 
 videoshow(images, options)
   .audio(audio)
-  .save('video.mp4')
+  .save('./mp4/transition.mp4')
   .on('start', function (command) {
     console.log('ffmpeg process started:', command)
   })
